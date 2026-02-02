@@ -32,8 +32,8 @@
 
                 <form method="post" class="TodoForm">
                     {% csrf_token %}
-                    <input type="text" name="title" required class="todo-input inp" placeholder="What is the task today?">
-                    <input class="submit-button" type="submit" value="Add Task">
+                    <input type="text" name="title" required class="todo-input inp" value="{{obj.title}}">
+                    <input class="submit-button" type="submit" value="Update Task">
                     <br>
                 </form>
                 
@@ -43,27 +43,10 @@
                     <p>{{todo.title}}</p>
                     <div>
                         <a href="/edit_todo/{{todo.srno}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="/delete_todo/{{todo.srno}}"><i class="fa-solid fa-trash"></i></a>
+                        <a href=""><i class="fa-solid fa-trash"></i></a>
                     </div>
                 </div>
                 {% endfor %}
-                <!-- {% if res %}
-                <div style="margin-top:18px; display:flex; flex-direction:column; gap:12px;">
-                    {% for todo in res %}
-                    <div class="Todo {% if todo.status %}todo-green{% else %}todo-red{% endif %}">
-                        <p class="{% if todo.status %}completed{% endif %}" style="margin:0; flex:1;">{{ todo.title }}</p>
-                        <div style="display:flex; gap:12px; align-items:center;">
-                            <a href="/edit_todo/{{ todo.srno }}" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="/delete_todo/{{ todo.srno }}" title="Delete" style="color:#ef4444;"><i class="fa-solid fa-trash"></i></a>
-                        </div>
-                    </div>
-                    {% endfor %}
-                
-                {% else %}
-                <div class="Todo" style="justify-content:center; color:var(--muted); margin-top:18px;">
-                    No tasks yet — add your first task above ✨
-                </div>
-                {% endif %} -->
 
             </div>
 
