@@ -20,8 +20,9 @@
         <div style="width:100%; max-width:920px; margin:0 auto;">
             <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
                 <h1 style="margin:0; font-size:1.5rem;">Hello, {{ user.username }}</h1>
-                <div>
-                    <a class="anc" href="/logout">Logout</a>
+                <div class="anca">
+                    <a class="sign" href="{% url 'signout' %}">Logout</a>
+                    <i class="fa-solid fa-right-from-bracket"></i>
                 </div>
             </header>
 
