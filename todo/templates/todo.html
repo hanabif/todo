@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Font Awesome 5 Brands:wght@400&display=swap" />
+    <script src="https://kit.fontawesome.com/cb792c0850.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="signup-login">
+        <div style="width:100%; max-width:920px; margin:0 auto;">
+            <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+                <h1 style="margin:0; font-size:1.5rem;">Hello, {{ user.username }}</h1>
+                <div>
+                    <a class="anc" href="/logout">Logout</a>
+                </div>
+            </header>
+
+            <div class="signup-box scr" style="padding:22px;">
+                <div class="heads" style="align-items:center;">
+                    <div class="heading" style="margin:0; font-size:1.125rem;">Got Things Done?</div>
+                </div>
+
+                <form method="post" class="TodoForm">
+                    {% csrf_token %}
+                    <input type="text" name="title" required class="todo-input inp" placeholder="What is the task today?">
+                    <input class="submit-button" type="submit" value="Add Task">
+                    <br>
+                </form>
+                
+                {% for todo in res%}
+                <div class = 'Todo'>
+                    <h5>{{todo.srno}}</h5>
+                    <p>{{todo.title}}</p>
+                    <div>
+                        <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- {% if res %}
+                <div style="margin-top:18px; display:flex; flex-direction:column; gap:12px;">
+                    {% for todo in res %}
+                    <div class="Todo {% if todo.status %}todo-green{% else %}todo-red{% endif %}">
+                        <p class="{% if todo.status %}completed{% endif %}" style="margin:0; flex:1;">{{ todo.title }}</p>
+                        <div style="display:flex; gap:12px; align-items:center;">
+                            <a href="/edit_todo/{{ todo.srno }}" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="/delete_todo/{{ todo.srno }}" title="Delete" style="color:#ef4444;"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                
+                {% else %}
+                <div class="Todo" style="justify-content:center; color:var(--muted); margin-top:18px;">
+                    No tasks yet — add your first task above ✨
+                </div>
+                {% endif %} -->
+
+            </div>
+
+        </div>
+    </div>
+    <!-- <script src="{% static 'js/todo.js' %}"></script> -->
+</body>
+
+</html>
